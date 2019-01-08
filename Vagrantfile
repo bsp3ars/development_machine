@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "bento/centos-7.1"
   #config.vm.box = "centos-6"
-  config.vm.hostname = 'MacDev'
+  config.vm.hostname = 'development-machine'
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -46,8 +46,7 @@ config.vm.network "private_network", ip: "192.168.33.10"
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-#config.vm.synced_folder "~/Development", "/home/vagrant/Development", type: "virtualbox"
-config.vm.synced_folder "~/Development", "/home/vagrant/Development", type: "nfs"
+config.vm.synced_folder "~/Development", "/home/vagrant/Development"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -82,5 +81,5 @@ end
   # SHELL
 config.vm.provision "shell", path: "provision.sh"  
 
-config.vbguest.auto_update = false
+config.vbguest.auto_update = true
 end
